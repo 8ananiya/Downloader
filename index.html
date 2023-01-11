@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Magic Card</title>
+<link id="op" rel="shortcut icon" href="IMG_1673117332983.png">
   <link rel="stylesheet" href="./style.css">
 <style>
 @property --rotate {
@@ -16,19 +17,265 @@
   --card-width: calc(var(--card-height) / 1.5);
 }
 
-
-body {
-  min-height: 100vh;
+body{
+    min-height: 100vh;
   background: #212534;
-display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   padding-top: 2rem;
   padding-bottom: 2rem;
   box-sizing: border-box;
+  font-size: 80px;
+}
+.ji {
+
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+    padding-top: 30vh;
+  padding-bottom: 30vh;
+  box-sizing: border-box;
+  font-size: 80px;
+}
+img{
+    min-height: 10vh
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding: 2% 6%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  width: 250px;
 }
 
+#op{
+  font-size: 80px;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+a {
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+svg{font-weight:bold;max-width:1000px;height:100%;}
+h1{
+  color: #fff;
+  font-size: 27px;
+  font-weight: 500;
+}
+h3{
+text-align: center; 
+            font-size: 50px; 
+            background: linear-gradient(to left, 
+                    #ee7752, 
+                    #e73c7e, 
+                     #23a6d5, 
+                    #23d5ab);
+           -webkit-background-clip: text; 
+            color: transparent; 
+  font-size: 18px;
+  margin-top: 5px;
+}
+form{
+  margin: 20px 0 27px;
+}
+form input{
+  opacity: 0.7;
+  width: 100%;
+  height: 60px;
+  outline: none;
+  font-size: 19px;
+  padding: 0 17px;
+  border-radius: 5px;
+  border: 1px solid #b3b2b2;
+}
+form button{
+  opacity: 0.3;
+  width: 100%;
+  height: 60px;
+  color: #fff;
+  outline: none;
+  font-size: 19px;
+  padding: 15px 0;
+  border: none;
+  top: 40px;
+  margin-top: 20px;
+  background: #005cf4;
+  border-radius: 5px;
+  cursor: pointer;
+  pointer-events: none;
+}
+form input:valid ~ button{
+  opacity: 1;
+  
+  pointer-events: auto;
+}
+span{
+  color: transparent;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	border-radius: 5px;
+  -webkit-background-clip: text; 
+            color: transparent; 
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+  box-shadow: 0 0 40px;
+}
+.card::before {
+  z-index: -1;
+  content: " ";
+  width: 50%;
+  height: 32%;
+  
+  background-size: cover;
+  filter: blur(5px);
+  position: absolute;
+}
+
+
+.content{
+  text-align: center;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 5rem 3rem;
+  position: relative;
+  display: grid;
+  align-content: center;
+  transition: transforem 1s;
+  
+  transform-style: preserve-3d;
+  transition: 1s;
+  
+}
+.content::before{
+  content: "";
+  position: absolute;
+  z-index: 10px;
+  inset: 0;
+  border: 3px solid #fff;
+  transform: translateZ(2rem);
+
+}
+.content::after{
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(229, 229, 299, 0.25);
+  transform: translateZ(-2rem);
+}
+.title{
+  position: relative;
+  z-index: 10;
+  font-size: 2.5rem;
+transform: translateZ(6rem);
+}
+.subtitle{
+  position: relative;
+  z-index: 10;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+transform: translateZ(8rem);
+}
+.content:hover{
+  transform: rotateY(32deg) rotateX(32deg);
+}
+
+
+@media(max-width: 700px){
+  @property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+body{
+    min-height: 100vh;
+  background: #212534;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  font-size: 80px;
+}
+.ji {
+
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+    padding-top: 20vh;
+  padding-bottom: 30vh;
+  box-sizing: border-box;
+  font-size: 80px;
+}
+img{
+    min-height: 10vh
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding: 2% 6%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  width: 250px;
+}
 
 
 
@@ -144,12 +391,81 @@ span{
 		background-position: 0% 50%;
 	}
 }
+.card {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+  box-shadow: 0 0 40px;
+}
+.card::before {
+  z-index: -1;
+  content: " ";
+  width: 50%;
+  height: 32%;
+  
+  background-size: cover;
+  filter: blur(5px);
+  position: absolute;
+}
 
+
+.content{
+  text-align: center;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 5rem 3rem;
+  position: relative;
+  display: grid;
+  align-content: center;
+  transition: transforem 1s;
+  
+  transform-style: preserve-3d;
+  transition: 1s;
+  
+}
+.content::before{
+  content: "";
+  position: absolute;
+  z-index: 10px;
+  inset: 0;
+  border: 3px solid #fff;
+  transform: translateZ(2rem);
+
+}
+.content::after{
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(229, 229, 299, 0.25);
+  transform: translateZ(-2rem);
+}
+.title{
+  position: relative;
+  z-index: 10;
+  font-size: 2.5rem;
+transform: translateZ(6rem);
+}
+.subtitle{
+  position: relative;
+  z-index: 10;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+transform: translateZ(8rem);
+}
+.content:hover{
+  transform: rotateY(32deg) rotateX(32deg);
+}
+
+}
 </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="card">
+<section class="ji">
+  <div class="card">
       <header>
         
 <h1><span>CORETECH</span> File Downloader</h1>
@@ -157,16 +473,42 @@ span{
         
         <h3>paste the url of Video,imges and pdf to download For Free</h3>
       </header>
-      <form action="#">
+      <form action="" method="post">
         <input type="url" placeholder="Paste file url" required>
         <button>Download File</button>
       </form>
     </div>
 </div>
-
+</section>
 
 <script>
+  const fileInput = document.querySelector("input"),
+  downloadBtn = document.querySelctor("button");
   
+  downloadBtn.addEventListener("click", e=> {
+    e.preventDefault(); // preventing from from submitting
+   downloadBtn.innerText = "Downloading file...";
+    fetchFile(fileInput.value);
+  });
+  
+  function fetchFile(url) {
+    fetch(url).then(res => res.blob()).then(file => {
+      let tempUrl = URL.creatobjectURL(file);
+      let aTag = document.createElemnet("a");
+      aTag.href = tempUrl;
+      aTage.download = url.replace(/^.*[\\\/]/, '');
+      document.body.appendChild(aTag);
+      aTag.click();
+      aTag.remove();
+      URL.revokeObjectURL(tempUrl);
+      downloadBtn.innerText = "Download File";
+    }).catch(() => {
+      
+      downloadBtn.innerText = "Download File";
+      alert("Failed to download file!");
+      
+    });
+  }
 </script>
 </body>
 </html>
